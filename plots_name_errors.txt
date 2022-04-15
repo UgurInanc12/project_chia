@@ -1,0 +1,32 @@
+2022-03-13T01:03:40.787  chia.plotting.check_plots        : [32mINFO    [0m Loading plots in config.yaml using plot_manager loading code (parallel read: True)
+[0m
+2022-03-13T01:03:41.116  chia.plotting.manager            : [32mINFO    [0m Loaded 136 bytes of cached data[0m
+2022-03-13T01:03:41.178  chia.plotting.check_plots        : [32mINFO    [0m event: started, loaded 0 plots, 5 remaining[0m
+2022-03-13T01:03:41.179  chia.plotting.manager            : [32mINFO    [0m Only loading plots that contain "C:\plots\k25\plot-k25-2022-02-27-13-04-a9e7b41d714010fa8c0e29948911ccda994a626cb246b3d10e0f196bf6026a2f.plot" in the file or directory name[0m
+2022-03-13T01:03:41.187  chia.plotting.manager            : [32mINFO    [0m Found plot C:\plots\k25\plot-k25-2022-02-27-13-04-a9e7b41d714010fa8c0e29948911ccda994a626cb246b3d10e0f196bf6026a2f.plot of size 25[0m
+2022-03-13T01:03:41.189  chia.plotting.check_plots        : [32mINFO    [0m event: batch_processed, loaded 1 plots, 0 remaining[0m
+2022-03-13T01:03:41.189  chia.plotting.check_plots        : [32mINFO    [0m event: done, loaded 1 plots, 0 remaining[0m
+2022-03-13T01:03:42.192  chia.plotting.check_plots        : [32mINFO    [0m [0m
+2022-03-13T01:03:42.192  chia.plotting.check_plots        : [32mINFO    [0m [0m
+2022-03-13T01:03:42.193  chia.plotting.check_plots        : [32mINFO    [0m Starting to test each plot with 50 challenges each
+[0m
+2022-03-13T01:03:42.193  chia.plotting.check_plots        : [32mINFO    [0m Testing plot C:\plots\k25\plot-k25-2022-02-27-13-04-a9e7b41d714010fa8c0e29948911ccda994a626cb246b3d10e0f196bf6026a2f.plot k=25[0m
+2022-03-13T01:03:42.193  chia.plotting.check_plots        : [32mINFO    [0m 	Pool public key: b2577b5667c7d0dce4d9dadbef445b84f1e0f8f20ad2b33d0bf09fd39b13300a999f3c8ff170133f2de430389afb1dd2[0m
+2022-03-13T01:03:42.206  chia.plotting.check_plots        : [32mINFO    [0m 	Farmer public key: ab54a17d20973c9addf379f9733d2c714b632db33719ba663c96b51b9c5bd2c09a03bc0f4b44bcce12383f95b5c0d7b8[0m
+2022-03-13T01:03:42.206  chia.plotting.check_plots        : [32mINFO    [0m 	Local sk: <PrivateKey 6f2aa33a1b2979e00a6b6e9be2dc4de05f7384a42a9ab520a5c3967b586b83d4>[0m
+2022-03-13T01:03:42.353  chia.plotting.check_plots        : [32mINFO    [0m 	Looking up qualities took: 115 ms.[0m
+2022-03-13T01:03:42.388  chia.plotting.check_plots        : [32mINFO    [0m 	Finding proof took: 36 ms[0m
+2022-03-13T01:03:42.389  chia.plotting.check_plots        : [32mINFO    [0m 	Looking up qualities took: 0 ms.[0m
+2022-03-13T01:03:42.399  chia.plotting.check_plots        : [32mINFO    [0m 	Finding proof took: 10 ms[0m
+2022-03-13T01:03:42.409  chia.plotting.check_plots        : [32mINFO    [0m 	Looking up qualities took: 9 ms.[0m
+2022-03-13T01:03:42.420  chia.plotting.check_plots        : [32mINFO    [0m 	Finding proof took: 11 ms[0m
+2022-03-13T01:03:42.421  chia.plotting.check_plots        : [32mINFO    [0m 	Looking up qualities took: 0 ms.[0m
+2022-03-13T01:03:42.433  chia.plotting.check_plots        : [32mINFO    [0m 	Finding proof took: 11 ms[0m
+2022-03-13T01:03:42.433  chia.plotting.check_plots        : [32mINFO    [0m 	Looking up qualities took: 0 ms.[0m
+2022-03-13T01:03:42.446  chia.plotting.check_plots        : [32mINFO    [0m 	Finding proof took: 13 ms[0m
+2022-03-13T01:03:42.454  chia.plotting.check_plots        : [32mINFO    [0m 	Looking up qualities took: 7 ms.[0m
+2022-03-13T01:03:42.466  chia.plotting.check_plots        : [32mINFO    [0m 	Finding proof took: 12 ms[0m
+2022-03-13T01:03:42.474  chia.plotting.check_plots        : [32mINFO    [0m 	Looking up qualities took: 7 ms.[0m
+2022-03-13T01:03:42.483  chia.plotting.check_plots        : [32mINFO    [0m 	Finding proof took: 9 ms[0m
+2022-03-13T01:03:42.507  chia.plotting.check_plots        : [32mINFO    [0m 	Looking up qualities took: 5 ms.[0m
+2022-03-13T01:03:42.516  chia.plotting.check_plots        : [32mINFO    [0m 	Finding proof took: 9 ms[0m
