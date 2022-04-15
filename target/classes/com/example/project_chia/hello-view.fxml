@@ -21,7 +21,7 @@
                 <padding>
                     <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                 </padding>
-            
+
                                               <Label fx:id="welcomeText" prefHeight="17.0" prefWidth="112.0" text="deneme" />
                <Pane prefHeight="100.0" prefWidth="217.0" />
                 <Button onAction="#onHelloButtonClick" text="Hello!" />
