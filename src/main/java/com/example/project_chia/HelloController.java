@@ -14,7 +14,6 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class HelloController {
-    public Label welcomeText1;
     String windows_username = System.getProperty("user.name");
     @FXML
     private Label welcomeText;
