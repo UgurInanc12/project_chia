@@ -5,7 +5,7 @@
   </component>
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="project_chia:jar2" />
+      <artifact name="project_chia:jar" />
     </artifacts-to-build>
   </component>
   <component name="AutoImportSettings">
@@ -13,38 +13,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1b14d921-ac7f-4e54-8f87-5285336ba709" name="Changes" comment="test commit">
-      <change afterPath="$PROJECT_DIR$/.idea/kotlinc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_api___junit_version_.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_engine___junit_version_.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_win_18.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apiguardian_apiguardian_api_1_1_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_api_5_8_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_engine_5_8_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_commons_1_8_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_engine_1_8_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_17_0_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_18.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_win_17_0_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_win_18.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_17_0_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_18.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_win_17_0_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_win_18.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_fxml_17_0_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_fxml_18.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_fxml_win_17_0_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_fxml_win_18.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_17_0_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_18.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_win_17_0_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_opentest4j_opentest4j_1_2_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/project_chia_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/project_chia.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/project_chia_jar2.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project_chia.iml" beforeDir="false" afterPath="$PROJECT_DIR$/project_chia.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project_chia/App.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project_chia/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project_chia/HelloApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project_chia/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project_chia/HelloController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project_chia/commands.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project_chia/commands.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project_chia/getVersion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project_chia/getVersion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project_chia/getpassphrase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project_chia/getpassphrase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project_chia/passphrasePageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project_chia/passphrasePageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/project_chia/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/project_chia/hello-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/project_chia/passphrase_Page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/project_chia/passphrase_Page.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/project_chia/HelloApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/project_chia/HelloApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/0_edited.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_edited.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2_edited.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/3_edited.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chia_version.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chia_version_errors.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plot_paths.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plot_paths_errors.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots_name.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots_name_errors.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/project_chia/App.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/project_chia/commands.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/project_chia/commands.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/project_chia/getVersion.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/project_chia/getVersion.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/project_chia/getpassphrase.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/project_chia/getpassphrase.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/project_chia/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/project_chia/hello-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/project_chia/passphrase_Page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/project_chia/passphrase_Page.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,6 +56,9 @@
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="Git.Rebase.Settings">
+    <option name="NEW_BASE" value="master" />
   </component>
   <component name="Git.Settings">
     <excluded-from-favorite>
@@ -105,17 +96,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.20689656&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;terminal&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/uguri/Desktop/New folder",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.20689656",
+    "settings.editor.selected.configurable": "terminal"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.example.project_chia" />
@@ -132,9 +124,22 @@
       <recent name="com.example.project_chia" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.App">
+  <component name="RunManager" selected="Application.HelloApplication">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.project_chia.App" />
+      <module name="project_chia" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.project_chia.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.project_chia.HelloApplication" />
       <module name="project_chia" />
       <extension name="coverage">
         <pattern>
@@ -160,12 +165,14 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Application.HelloApplication" />
       <item itemvalue="Application.App" />
       <item itemvalue="JAR Application.project_chia.jar" />
       <item itemvalue="JUnit.All in project_chia" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.HelloApplication" />
         <item itemvalue="Application.App" />
         <item itemvalue="JAR Application.project_chia.jar" />
         <item itemvalue="JUnit.All in project_chia" />

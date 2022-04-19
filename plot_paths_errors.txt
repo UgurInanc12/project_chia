@@ -1,4 +1,0 @@
-Usage: chia.exe plots show [OPTIONS]
-Try 'chia.exe plots show -h' for help.
-
-Error: Got unexpected extra argument (D:\tmp1processes.txt)
