@@ -28,18 +28,18 @@ public class HelloController {
 
     @FXML
     protected void removealine() throws IOException {
-        new commands("RemoveALine", null);
+        new com.example.project_chia.commands("RemoveALine", null);
 
     }
 
     @FXML
     protected void findPaths() throws IOException {
-        new commands("findPaths", null);
+        new com.example.project_chia.commands("findPaths", null);
     }
 
     @FXML
     protected void checkPlots() throws IOException {
-        new commands("checkPlots", null);
+        new com.example.project_chia.commands("checkPlots", null);
 
 
     }
@@ -47,13 +47,13 @@ public class HelloController {
     @FXML
     protected void add_a_path() throws IOException {
         add_a_path_textfield.setVisible(true);
-        new commands("add_a_path", add_a_path_textfield.getText());
+        new com.example.project_chia.commands("add_a_path", add_a_path_textfield.getText());
     }
 
 
     @FXML
     protected void Show_Keys() throws IOException {
-        new commands("Show_Keys", null);
+        new com.example.project_chia.commands("Show_Keys", null);
     }
     private Stage stage;
     private Scene scene;

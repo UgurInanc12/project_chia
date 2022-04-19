@@ -6,7 +6,7 @@ public class getVersion {
     String windows_username = System.getProperty("user.name");
 
     public getVersion() throws IOException {
-        ProcessBuilder cia_version = new ProcessBuilder("powershell.exe", "(Get-Item C:\\Users\\" + windows_username +
+        ProcessBuilder cia_version = new ProcessBuilder("C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe", "(Get-Item C:\\Users\\" + windows_username +
                 "\\AppData\\Local\\chia-blockchain\\chia.exe).VersionInfo.ProductVersion" +
                 " >C:\\tmp1\\chia_version.txt 2>&1 ; exit");
         Process process = cia_version.start();

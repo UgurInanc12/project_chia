@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Text?>
 
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project_chia.passphrasePageController">
+<AnchorPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.project_chia.passphrasePageController">
    <children>
       <Button layoutX="366.0" layoutY="225.0" mnemonicParsing="false" onAction="#savePassphrase" text="Save" />
       <TextField fx:id="passphraseTextField" layoutX="193.0" layoutY="188.0" prefWidth="214.0" />

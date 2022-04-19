@@ -15,7 +15,7 @@ public class commands {
         String version = null;
         try {
 
-            BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
+            BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file), StandardCharsets.UTF_16));
             version = br.readLine();
             System.out.println("version degiskeni:" + version);
             br.close();
@@ -131,9 +131,9 @@ public class commands {
     }
 
     public void findPaths_command() throws IOException, InterruptedException {
-        checkFile("findPaths_command");
+        //checkFile("findPaths_command");
 
-        ProcessBuilder findPath = new ProcessBuilder("powershell.exe", "cd C:\\Users\\" + windows_username +
+        ProcessBuilder findPath = new ProcessBuilder("C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe", "cd C:\\Users\\" + windows_username +
                 "\\AppData\\Local\\chia-blockchain\\app-" + chiaVersion() + "\\resources\\app.asar.unpacked\\daemon ; " +
                 "./chia.exe plots show >C:\\tmp1\\plot_paths.txt 2>&1 ; exit");
 
@@ -171,9 +171,9 @@ public class commands {
         while ((line = br.readLine()) != null) {
             System.out.println("location for terminal:" + line);
             // Executing the command with ProcessBuilder
-            ProcessBuilder plot_checker = new ProcessBuilder("powershell.exe", "cd C:\\Users\\" + windows_username
+            ProcessBuilder plot_checker = new ProcessBuilder("C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe", "cd C:\\Users\\" + windows_username
                     + "\\AppData\\Local\\chia-blockchain\\app-" + chiaVersion() + "\\resources\\app.asar.unpacked\\daemon ; " +
-                    "./chia.exe plots check -g " + line + " " +
+                    "./chia.exe plots check -g " + line + "\\ " +
                     "-n 100  >C:\\tmp1\\" + loop1 + ".txt 2>&1 ; exit");
             Process process = plot_checker.start();
 
@@ -183,7 +183,6 @@ public class commands {
 
             RemoveALine_command("plotParsing", line, loop1);
             RemoveALine_command("clearEmptySpace", line, loop1);
-            //RemoveALine_command("rewritePlotInfos", line, loop1);
 
             loop1++;
 
@@ -193,7 +192,7 @@ public class commands {
         System.out.println("checkPlots_command is done");
     }
 
-    public void passphrase_save(String passphraseTextField) throws IOException {
+    public void passphrase_save(String passphraseTextField) {
         checkFile("passphrase");
         System.out.println("\nplot_paths.txt organizing");
         try {
@@ -203,7 +202,7 @@ public class commands {
             File tempFile = new File(inputFile + ".tmp");
             BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(inputFile), StandardCharsets.UTF_16));
             BufferedWriter bw = new BufferedWriter(new FileWriter(tempFile));
-            String line = null;
+            String line;
 
             //Read from the original file and write to the new
             //unless content matches data to be removed.
@@ -289,7 +288,6 @@ public class commands {
         // Getting the results
         powerShellProcess1.getOutputStream().close();
         // Print outputs from powershell
-        String line;
         System.out.println("Standard Output:");
 
         powerShellProcess1.destroy();
@@ -298,6 +296,8 @@ public class commands {
     }
 
     private void RemoveALine_command(String command, String line, Integer loop1) {
+        BufferedReader br;
+        BufferedWriter bw;
         if (command.equals("findPaths_command")) {
 
             System.out.println("\nplot_paths.txt organizing");
@@ -309,9 +309,8 @@ public class commands {
                 }
                 //Construct the new file that will later be renamed to the original filename.
                 File tempFile = new File(inputFile + ".tmp");
-                BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(inputFile), StandardCharsets.UTF_16));
-                BufferedWriter bw = new BufferedWriter(new FileWriter(tempFile));
-                line = null;
+                br = new BufferedReader(new InputStreamReader(new FileInputStream(inputFile), StandardCharsets.UTF_16));
+                bw = new BufferedWriter(new FileWriter(tempFile));
 
                 //Read from the original file and write to the new
                 //unless content matches data to be removed.
@@ -352,8 +351,8 @@ public class commands {
                 }
                 //Construct the new file that will later be renamed to the original filename.
                 File tempFile = new File(inputFile + ".tmp");
-                BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(inputFile), StandardCharsets.UTF_16));
-                BufferedWriter bw = new BufferedWriter(new FileWriter(tempFile));
+                br = new BufferedReader(new InputStreamReader(new FileInputStream(inputFile), StandardCharsets.UTF_16));
+                bw = new BufferedWriter(new FileWriter(tempFile));
                 line = null;
 
                 //Read from the original file and write to the new
@@ -394,44 +393,45 @@ public class commands {
                 }
                 //Construct the new file that will later be renamed to the original filename.
                 File tempFile = new File(inputFile + ".tmp");
-                BufferedReader br1 = new BufferedReader(new InputStreamReader(new FileInputStream(inputFile), StandardCharsets.UTF_16));
-                BufferedWriter bw1 = new BufferedWriter(new FileWriter(tempFile));
+                br = new BufferedReader(new InputStreamReader(new FileInputStream(inputFile), StandardCharsets.UTF_16));
+                bw = new BufferedWriter(new FileWriter(tempFile));
                 String line1 = null;
 
                 //Read from the original file and write to the new
                 //unless content matches data to be removed.
                 System.out.println("while a geldi");
                 int nextline = 0;
-                while ((line1 = br1.readLine()) != null) {
-                    line1=line1.replace("\u001B[0m","");
-                    line1=line1.replace("\u001B[32m","");
-                    line1=line1.replace("\u001B[33m","");
+                while ((line1 = br.readLine()) != null) {
+                    line1 = line1.replace("\u001B[0m", "");
+                    line1 = line1.replace("\u001B[32m", "");
+                    line1 = line1.replace("\u001B[33m", "");
 
                     System.out.println(line1);
                     if (nextline == 1 && !line1.startsWith("-", 4)) {
-                        bw1.write(line1);
-                        bw1.write("\n");
+                        bw.write(line1);
+                        bw.write("\n");
                         nextline = 0;
                     } else if (nextline == 1 && line1.startsWith("-", 4)) {
-                        bw1.write("\n");
+                        bw.write("\n");
                         nextline = 0;
                     }
                     if (line1.contains("Testing plot") || line1.contains("Pool public key") ||
                             line1.contains("Farmer public key") || line1.contains("Local sk") || line1.contains("Proofs")) {
-                        bw1.write(line1);
+                        bw.write(line1);
                         nextline = 1;
 
                     }
                 }
 
-                bw1.close();
-                br1.close();
+                bw.close();
+                br.close();
 
                 //Delete the original file
                 if (!inputFile.delete()) {
                     System.out.println("Could not delete file");
                     return;
                 }
+
 
                 //Rename the new file to the filename the original file had.
                 if (!tempFile.renameTo(inputFile))
@@ -451,46 +451,55 @@ public class commands {
                 }
                 //Construct the new file that will later be renamed to the original filename.
                 File tempFile = new File(inputFile + ".tmp");
-                BufferedReader br2 = new BufferedReader(new InputStreamReader(new FileInputStream(inputFile)));
-                BufferedWriter bw2 = new BufferedWriter(new FileWriter(tempFile));
-                String line1 = null;
+                br = new BufferedReader(new InputStreamReader(new FileInputStream(inputFile), "UTF8"));
+                bw = new BufferedWriter(new FileWriter(tempFile));
+                String line1;
 
                 //Read from the original file and write to the new
                 //unless content matches data to be removed.
                 System.out.println("while a geldi");
                 int lineCount = 0;
-                while ((line1 = br2.readLine()) != null) {
+                while ((line1 = br.readLine()) != null) {
 
                     System.out.println(line1);
 
+                    bw.write(line1.substring(65));
+
+                    bw.write("\n");
+                    /*
                     if (!line1.isEmpty() && lineCount == 0) {
 
-                        bw2.write(line1.substring(81, line1.length() - 5));
-                        bw2.write("\n");
+                        bw.write(line1.substring(65));
+
+                        bw.write("\n");
                         lineCount += 1;
 
                     } else if (!line1.isEmpty() && lineCount == 1) {
-                        bw2.write(line1.substring(87));
-                        bw2.write("\n");
+
+                        bw.write(line1.substring(65));
+                        bw.write("\n");
                         lineCount += 1;
 
                     } else if (!line1.isEmpty() && lineCount == 2) {
-                        bw2.write(line1.substring(89));
-                        bw2.write("\n");
+
+                        bw.write(line1.substring(65));
+                        bw.write("\n");
                         lineCount += 1;
 
                     } else if (!line1.isEmpty() && lineCount == 3) {
-                        bw2.write(line1.substring(92));
-                        bw2.write("\n");
-                        lineCount += 1;
-                    } else if (!line1.isEmpty() && lineCount == 4) {
-                        bw2.write(line1.substring(84));
-                        bw2.write("\n");
+
+                        bw.write(line1.substring(65));
+                        bw.write("\n");
                         lineCount = 0;
-                    }
+                    } /*else if (!line1.isEmpty() && lineCount == 4) {
+                        bw.write(line1.substring(84, line1.length() - 5));
+                        bw.write("\n");
+                        lineCount = 0;
+                    }*/
+
                 }
-                bw2.close();
-                br2.close();
+                bw.close();
+                br.close();
 
                 //Delete the original file
                 if (!inputFile.delete()) {

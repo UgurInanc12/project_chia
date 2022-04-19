@@ -18,7 +18,7 @@ public class passphrasePageController {
     private Scene scene;
     @FXML
     protected void savePassphrase(ActionEvent event) throws IOException {
-        new commands("savePassphrase", passphraseTextField.getText());
+        new com.example.project_chia.commands("savePassphrase", passphraseTextField.getText());
         Parent root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);

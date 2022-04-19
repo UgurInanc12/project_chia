@@ -7,7 +7,7 @@ import java.nio.file.Path;
 
 
 public class getpassphrase {
-    public String getpassphraseFile() {
+    public String getpassphrase() {
         File file1 = new File("C:\\tmp1\\passphrase.txt");
         //File file1 = new File("C:\\tmp1\\passphrase.txt");
         if (Files.isDirectory(Path.of("C:\\tmp1"))) {
