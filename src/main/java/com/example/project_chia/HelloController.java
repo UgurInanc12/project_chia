@@ -1,5 +1,6 @@
 package com.example.project_chia;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -7,6 +8,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -19,6 +21,15 @@ public class HelloController {
     private Label welcomeText;
     @FXML
     private TextField add_a_path_textfield;
+    @FXML
+    private TextField Check_Number;
+    @FXML
+    private ListView doneList;
+
+
+
+
+
 
 
     @FXML
@@ -26,10 +37,16 @@ public class HelloController {
         welcomeText.setText("Welcome to JavaFX Application!");
     }
 
+
+
     @FXML
     protected void removealine() throws IOException {
         new com.example.project_chia.commands("RemoveALine", null);
 
+    }
+    @FXML
+    protected void clear_AddtoParhText() throws IOException {
+        add_a_path_textfield.setText("");
     }
 
     @FXML
@@ -39,9 +56,7 @@ public class HelloController {
 
     @FXML
     protected void checkPlots() throws IOException {
-        new com.example.project_chia.commands("checkPlots", null);
-
-
+        new com.example.project_chia.commands("checkPlots", Check_Number.getText());
     }
 
     @FXML
@@ -65,4 +80,6 @@ public class HelloController {
         stage.setScene(scene);
         stage.show();
     }
+
+
 }

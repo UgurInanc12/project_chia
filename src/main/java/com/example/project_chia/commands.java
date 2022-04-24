@@ -17,7 +17,7 @@ public class commands {
 
             BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file), StandardCharsets.UTF_16));
             version = br.readLine();
-            System.out.println("version degiskeni:" + version);
+            System.out.println("Chia Version:" + version);
             br.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -35,7 +35,7 @@ public class commands {
             }
         } else if (command == "checkPlots") {
             try {
-                checkPlots_command();
+                checkPlots_command(Integer.valueOf(add_a_path_textfield));
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -51,38 +51,47 @@ public class commands {
     }
 
     public void checkFile(String whatCommand) {
+        Path tmp1 = Path.of("C:\\tmp1");
+        if (Files.isDirectory(tmp1)) {
+            System.out.println("---->there is tmp1 in C");
+        } else {
+            System.out.println("---->there is no tmp1 folder in C, Trying to Create new one");
+            try {
+                Files.createDirectory(tmp1);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        tmp1 = Path.of("C:\\tmp1\\results");
+        if (Files.isDirectory(tmp1)) {
+            System.out.println("---->there is results in tmp1");
+        } else {
+            System.out.println("---->there is no results folder in tmp1, Trying to Create new one");
+            try {
+                Files.createDirectory(tmp1);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
         if (whatCommand == "checkPlots_command") {
             File file1 = new File("C:\\tmp1\\plots_name.txt");
-            if (Files.isDirectory(Path.of("C:\\tmp1"))) {
-                System.out.println("---->there is tmp1 in C");
-            } else {
-                System.out.println("---->there is no tmp1 folder in C, Trying to Create new one");
-                try {
-                    Files.createDirectory(Path.of("C:\\tmp1"));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
             if (file1.exists()) {
                 System.out.println(file1 + "---->plots_name.txt already exists");
             } else {
                 System.out.println(file1 + "---->plots_name.txt does not exists and creating new plots_name.txt");
                 new File("C:\\tmp1\\plots_name.txt");
             }
-
-
+        } else if (whatCommand == "getVersion") {
+            File file1 = new File("C:\\tmp1\\chia_version.txt");
+            if (file1.exists()) {
+                System.out.println(file1 + "---->chia_version.txt already exists");
+            } else {
+                System.out.println(file1 + "---->chia_version.txt does not exists and creating new plots_name.txt");
+                new File("C:\\tmp1\\chia_version.txt");
+            }
         } else if (whatCommand == "findPaths_command") {
             File file1 = new File("C:\\tmp1\\plot_paths.txt");
-            if (Files.isDirectory(Path.of("C:\\tmp1"))) {
-                System.out.println("---->there is tmp1 in C");
-            } else {
-                System.out.println("---->there is no tmp1 folder in C, Trying to Create new one");
-                try {
-                    Files.createDirectory(Path.of("C:\\tmp1"));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
             if (file1.exists()) {
                 System.out.println(file1 + "---->plot_paths.txt already exists");
             } else {
@@ -91,16 +100,7 @@ public class commands {
             }
         } else if (whatCommand == "Show_Keys_command") {
             File file1 = new File("C:\\tmp1\\keys.txt");
-            if (Files.isDirectory(Path.of("C:\\tmp1"))) {
-                System.out.println("---->there is tmp1 in C");
-            } else {
-                System.out.println("---->there is no tmp1 folder in C, Trying to Create new one");
-                try {
-                    Files.createDirectory(Path.of("C:\\tmp1"));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
+
             if (file1.exists()) {
                 System.out.println(file1 + "---->keys.txt already exists");
             } else {
@@ -110,16 +110,7 @@ public class commands {
             }
         } else if (whatCommand == "passphrase") {
             File file1 = new File("C:\\tmp1\\passphrase.txt");
-            if (Files.isDirectory(Path.of("C:\\tmp1"))) {
-                System.out.println("---->there is tmp1 in C");
-            } else {
-                System.out.println("---->there is no tmp1 folder in C, Trying to Create new one");
-                try {
-                    Files.createDirectory(Path.of("C:\\tmp1"));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
+
             if (file1.exists()) {
                 System.out.println(file1 + "---->passphrase.txt already exists");
             } else {
@@ -131,7 +122,7 @@ public class commands {
     }
 
     public void findPaths_command() throws IOException, InterruptedException {
-        //checkFile("findPaths_command");
+        checkFile("findPaths_command");
 
         ProcessBuilder findPath = new ProcessBuilder("C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe", "cd C:\\Users\\" + windows_username +
                 "\\AppData\\Local\\chia-blockchain\\app-" + chiaVersion() + "\\resources\\app.asar.unpacked\\daemon ; " +
@@ -150,7 +141,7 @@ public class commands {
 
     }
 
-    public void checkPlots_command() throws IOException, InterruptedException {
+    public void checkPlots_command(Integer check_Number) throws IOException, InterruptedException {
         checkFile("checkPlots_command");
 
 
@@ -167,16 +158,15 @@ public class commands {
         //unless content matches data to be removed.
         System.out.println("while a geldi");
         int loop1 = 0;
-
+        String xchversion = chiaVersion();
         while ((line = br.readLine()) != null) {
             System.out.println("location for terminal:" + line);
             // Executing the command with ProcessBuilder
             ProcessBuilder plot_checker = new ProcessBuilder("C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe", "cd C:\\Users\\" + windows_username
-                    + "\\AppData\\Local\\chia-blockchain\\app-" + chiaVersion() + "\\resources\\app.asar.unpacked\\daemon ; " +
+                    + "\\AppData\\Local\\chia-blockchain\\app-" + xchversion + "\\resources\\app.asar.unpacked\\daemon ; " +
                     "./chia.exe plots check -g " + line + "\\ " +
-                    "-n 100  >C:\\tmp1\\" + loop1 + ".txt 2>&1 ; exit");
+                    "-n " + check_Number + "  >C:\\tmp1\\results\\" + loop1 + ".txt 2>&1 ; exit");
             Process process = plot_checker.start();
-
 
             int exitCode = process.waitFor();
             System.out.println("Exit code: " + exitCode);
@@ -186,10 +176,57 @@ public class commands {
 
             loop1++;
 
+
         }
         br.close();
-
+        mergeResults(null, loop1);
         System.out.println("checkPlots_command is done");
+    }
+
+    public void mergeResults(String line, int loop1) {
+        System.out.println("\nmerging result files");
+        try {
+            int i;
+            File newFile = new File("C:\\tmp1\\results\\results.txt.tmp");
+            BufferedWriter bw = new BufferedWriter(new FileWriter(newFile));
+            File inputFile = null;
+            BufferedReader br = null;
+            System.out.println(" mergeResults while ina geldi");
+            while ((i = loop1) >= 0) {
+                inputFile = new File("C:\\tmp1\\results\\" + loop1 + ".txt");
+                if (!inputFile.isDirectory()) {
+                    System.out.println("last file string to read is not exist");
+                    break;
+                } else {
+                    br = new BufferedReader(new InputStreamReader(new FileInputStream(inputFile), StandardCharsets.UTF_16));
+                    System.out.println(" mergeResults while ina geldi");
+                    while ((line = br.readLine()) != null) {
+                        bw.write(line);
+                        bw.newLine();
+                    }
+                    i -= 1;
+                }
+            }
+
+            bw.close();
+            br.close();
+
+            //Delete the original file
+            if (!inputFile.delete()) {
+                System.out.println("Could not delete file");
+                return;
+            }
+
+            //Rename the new file to the filename the original file had.
+            if (!newFile.renameTo(new File("results.txt")))
+                System.out.println("Could not rename file");
+
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        System.out.println("passphrase.txt organizing is completed");
+
     }
 
     public void passphrase_save(String passphraseTextField) {
@@ -386,7 +423,7 @@ public class commands {
         } else if (command.equals("plotParsing")) {
             System.out.println("\n" + loop1 + ".txt organizing");
             try {
-                File inputFile = new File("C:\\tmp1\\" + loop1 + ".txt");
+                File inputFile = new File("C:\\tmp1\\results\\" + loop1 + ".txt");
                 if (!inputFile.isFile()) {
                     System.out.println("File does not exist");
                     return;
@@ -444,7 +481,7 @@ public class commands {
         } else if (command.equals("clearEmptySpace")) {
             System.out.println("\n" + loop1 + ".txt clearEmptySpace");
             try {
-                File inputFile = new File("C:\\tmp1\\" + loop1 + ".txt");
+                File inputFile = new File("C:\\tmp1\\results\\" + loop1 + ".txt");
                 if (!inputFile.isFile()) {
                     System.out.println("File does not exist");
                     return;

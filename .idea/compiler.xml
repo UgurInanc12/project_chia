@@ -9,8 +9,8 @@
         <module name="project_chia" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="project_chia" target="17" />
+    <bytecodeTargetLevel target="18">
+      <module name="project_chia" target="18" />
     </bytecodeTargetLevel>
   </component>
 </project>

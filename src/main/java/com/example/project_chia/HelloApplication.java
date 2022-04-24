@@ -11,9 +11,9 @@ public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
 
-
+        new getVersion();
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 720, 720);
+        Scene scene = new Scene(fxmlLoader.load(), 669.0, 816.0);
         stage.setTitle("chia plot checker!");
         stage.setScene(scene);
         stage.show();
