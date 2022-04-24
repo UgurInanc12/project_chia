@@ -22,6 +22,8 @@ public class HelloController {
     @FXML
     private TextField add_a_path_textfield;
     @FXML
+    private TextField health;
+    @FXML
     private TextField Check_Number;
     @FXML
     private ListView doneList;
@@ -42,6 +44,16 @@ public class HelloController {
     @FXML
     protected void removealine() throws IOException {
         new com.example.project_chia.commands("RemoveALine", null);
+
+    }
+    @FXML
+    protected void lowPlots() throws IOException {
+        new com.example.project_chia.commands("lowPlots", health.getText());
+
+    }
+    @FXML
+    protected void mergeResults() throws IOException {
+        new com.example.project_chia.commands("mergeResults", null);
 
     }
     @FXML

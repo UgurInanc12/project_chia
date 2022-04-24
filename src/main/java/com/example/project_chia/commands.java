@@ -39,6 +39,10 @@ public class commands {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+        } else if (command == "mergeResults") {
+            mergeResults("", Integer.parseInt(add_a_path_textfield));
+        } else if (command == "lowPlots") {
+            lowPlots(Float.valueOf(add_a_path_textfield));
         } else if (command == "add_a_path") {
             add_a_path_command(add_a_path_textfield);
         } else if (command == "Show_Keys") {
@@ -89,6 +93,22 @@ public class commands {
             } else {
                 System.out.println(file1 + "---->chia_version.txt does not exists and creating new plots_name.txt");
                 new File("C:\\tmp1\\chia_version.txt");
+            }
+        } else if (whatCommand == "lowScorePlot") {
+            File errorPlotFile = new File("C:\\tmp1\\result\\errorPlot.txt");
+            File lowScorePlot = new File("C:\\tmp1\\result\\lowScorePlot.txt");
+            if (errorPlotFile.exists()) {
+                System.out.println(errorPlotFile + "---->lowScorePlot.txt already exists");
+            } else {
+                System.out.println(errorPlotFile + "---->errorPlotFile.txt does not exists and creating new plots_name.txt");
+                new File("C:\\tmp1\\result\\errorPlot.txt");
+            }
+
+            if (lowScorePlot.exists()) {
+                System.out.println(lowScorePlot + "---->lowScorePlot.txt already exists");
+            } else {
+                System.out.println(lowScorePlot + "---->lowScorePlot.txt does not exists and creating new plots_name.txt");
+                new File("C:\\tmp1\\result\\lowScorePlot.txt");
             }
         } else if (whatCommand == "findPaths_command") {
             File file1 = new File("C:\\tmp1\\plot_paths.txt");
@@ -183,50 +203,206 @@ public class commands {
         System.out.println("checkPlots_command is done");
     }
 
-    public void mergeResults(String line, int loop1) {
-        System.out.println("\nmerging result files");
+    public void lowPlots(Float health) {
+        System.out.println("\nfounding low score result files");
+        System.out.println("\nplot_paths.txt organizing");
+        BufferedReader br;
+        BufferedWriter bw_err;
+        BufferedWriter bw_low;
+        String line;
+        checkFile("lowScorePlot");
         try {
-            int i;
-            File newFile = new File("C:\\tmp1\\results\\results.txt.tmp");
-            BufferedWriter bw = new BufferedWriter(new FileWriter(newFile));
-            File inputFile = null;
-            BufferedReader br = null;
-            System.out.println(" mergeResults while ina geldi");
-            while ((i = loop1) >= 0) {
-                inputFile = new File("C:\\tmp1\\results\\" + loop1 + ".txt");
-                if (!inputFile.isDirectory()) {
-                    System.out.println("last file string to read is not exist");
-                    break;
-                } else {
-                    br = new BufferedReader(new InputStreamReader(new FileInputStream(inputFile), StandardCharsets.UTF_16));
-                    System.out.println(" mergeResults while ina geldi");
-                    while ((line = br.readLine()) != null) {
-                        bw.write(line);
-                        bw.newLine();
+            File inputFile = new File("C:\\tmp1\\result\\result.txt");
+            File errorPlotFile = new File("C:\\tmp1\\result\\errorPlot.txt");
+            File lowScorePlot = new File("C:\\tmp1\\result\\lowScorePlot.txt");
+
+
+            br = new BufferedReader(new InputStreamReader(new FileInputStream(inputFile)));
+            bw_err = new BufferedWriter(new FileWriter(errorPlotFile));
+            bw_low = new BufferedWriter(new FileWriter(lowScorePlot));
+
+            //Read from the original file and write to the new
+            //unless content matches data to be removed.
+            System.out.println("lowScore ilk while ina geldi");
+            int lineInt1 = 1;
+            int lineInt2 = 0;
+            int lineInt3 = 0;
+            int lineInt4 = 0;
+            String line1 = null;
+            String line2 = null;
+            String line3 = null;
+            String line4 = null;
+            String line5 = null;
+            boolean count = false;
+            int lap5 = 0;
+            float score = 0;
+            while ((line = br.readLine()) != null) {
+                lap5++;
+                if (line.contains("Testing plot")) {
+                    line1 = line;
+
+                } else if (line.contains("Pool public key")) {
+                    line2 = line;
+                    count = true;
+
+                } else if (line.contains("Farmer public key")) {
+                    line3 = line;
+
+                } else if (line.contains("Local sk")) {
+                    line4 = line;
+
+                } else if (line.contains("Proofs")) {
+                    line5 = line;
+                }
+                if (lap5 == 5) {
+                    if (count == true) {
+
+                        if (line5.startsWith("ERROR")) {
+                            bw_err.write(line1);
+                            bw_err.newLine();
+                            bw_err.flush();
+
+                            bw_err.write(line2);
+                            bw_err.newLine();
+                            bw_err.flush();
+
+                            bw_err.write(line3);
+                            bw_err.newLine();
+                            bw_err.flush();
+
+                            bw_err.write(line4);
+                            bw_err.newLine();
+                            bw_err.flush();
+
+                            bw_err.write(line5);
+                            bw_err.newLine();
+                            bw_err.flush();
+
+                        } else {
+                            String s1 = line5.substring(line5.indexOf(",") + 1);
+                            s1.trim();
+                            score = Float.parseFloat(s1);
+                            System.out.println("score= " + score);
+                            if (score < health) {
+                                bw_low.write(line1);
+                                bw_low.newLine();
+                                bw_low.flush();
+
+                                bw_low.write(line2);
+                                bw_low.newLine();
+                                bw_low.flush();
+
+                                bw_low.write(line3);
+                                bw_low.newLine();
+                                bw_low.flush();
+
+                                bw_low.write(line4);
+                                bw_low.newLine();
+                                bw_low.flush();
+
+                                bw_low.write(line5);
+                                bw_low.newLine();
+                                bw_low.flush();
+                            }
+                        }
+
+                        count = false;
+                    } else if (count == false) {
+                        if (line5.startsWith("ERROR")) {
+                            bw_err.write(line1);
+                            bw_err.newLine();
+                            bw_err.flush();
+
+                            bw_err.write(line3);
+                            bw_err.newLine();
+                            bw_err.flush();
+
+                            bw_err.write(line4);
+                            bw_err.newLine();
+                            bw_err.flush();
+
+                            bw_err.write(line5);
+                            bw_err.newLine();
+                            bw_err.flush();
+
+                        } else {
+                            String s1 = line5.substring(line5.indexOf(",") + 1);
+                            s1.trim();
+                            score = Float.parseFloat(s1);
+                            System.out.println("score= " + score);
+                            if (score < health) {
+                                bw_low.write(line1);
+                                bw_low.newLine();
+                                bw_low.flush();
+
+                                bw_low.write(line3);
+                                bw_low.newLine();
+                                bw_low.flush();
+
+                                bw_low.write(line4);
+                                bw_low.newLine();
+                                bw_low.flush();
+
+                                bw_low.write(line5);
+                                bw_low.newLine();
+                                bw_low.flush();
+                            }
+                        }
                     }
-                    i -= 1;
+                    lap5 = 0;
                 }
             }
-
-            bw.close();
+            bw_err.close();
+            bw_low.close();
             br.close();
-
-            //Delete the original file
-            if (!inputFile.delete()) {
-                System.out.println("Could not delete file");
-                return;
-            }
-
-            //Rename the new file to the filename the original file had.
-            if (!newFile.renameTo(new File("results.txt")))
-                System.out.println("Could not rename file");
 
 
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-        System.out.println("passphrase.txt organizing is completed");
+        System.out.println("lowScorePlot.txt and errorPlot.txt is completed");
+    }
 
+    public void mergeResults(String line, int loop1) {
+        System.out.println("\nmerging result files");
+        try {
+            int i = loop1;
+            File newFile = new File("C:\\tmp1\\result\\result.txt");
+            BufferedWriter bw = new BufferedWriter(new FileWriter(newFile));
+            File inputFile = null;
+            inputFile = new File("C:\\tmp1\\result\\" + i + ".txt");
+            BufferedReader br = new BufferedReader((new InputStreamReader(new FileInputStream(inputFile), StandardCharsets.UTF_16)));
+            System.out.println(" mergeResults while ina geldi");
+            System.out.println("i=" + i);
+            while (true) {
+                System.out.println("while a girdi");
+                inputFile = new File("C:\\tmp1\\result\\" + i + ".txt");
+                try {
+                    if (!inputFile.exists()) {
+                        System.out.println("last file string to read is not exist");
+                        i = 0;
+                        break;
+                    } else {
+                        br = new BufferedReader(new InputStreamReader(new FileInputStream(inputFile)));
+                        System.out.println("loop1= " + i);
+                        while ((line = br.readLine()) != null) {
+                            bw.write(line);
+                            bw.newLine();
+                        }
+                        i -= 1;
+                    }
+                    if (i == 0)
+                        break;
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+            }
+            bw.close();
+            br.close();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        System.out.println("result.txt merging is completed");
     }
 
     public void passphrase_save(String passphraseTextField) {

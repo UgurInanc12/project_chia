@@ -6,7 +6,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.project_chia.HelloController">
+<Pane xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project_chia.HelloController">
     <children>
         <Pane prefHeight="816.0" prefWidth="669.0">
             <children>
@@ -20,7 +20,11 @@
                 <Button layoutX="545.0" layoutY="443.0" mnemonicParsing="false" onAction="#passphrase" text="Passphrase" />
             <TextField fx:id="Check_Number" layoutX="439.0" layoutY="136.0" prefHeight="26.0" prefWidth="77.0" text="5" />
             <Label layoutX="315.0" layoutY="142.0" prefHeight="22.0" prefWidth="124.0" text="At Least 30 test --&gt;" />
-            <ListView fx:id="doneList" layoutX="14.0" layoutY="518.0" prefHeight="284.0" prefWidth="623.0" />
+            <ListView fx:id="doneList" layoutX="14.0" layoutY="671.0" prefHeight="131.0" prefWidth="623.0" />
+            <Button layoutX="521.0" layoutY="477.0" mnemonicParsing="false" onAction="#mergeResults" prefHeight="25.0" prefWidth="99.0" text="MergeResults" />
+            <Button layoutX="521.0" layoutY="515.0" mnemonicParsing="false" onAction="#lowPlots" prefHeight="25.0" prefWidth="99.0" text="Find Low Plots" />
+            <TextField fx:id="health" layoutX="437.0" layoutY="515.0" prefHeight="25.0" prefWidth="77.0" text="0.7" />
+            <Label layoutX="262.0" layoutY="519.0" prefHeight="17.0" prefWidth="145.0" text="Recomanded 0.7 or above" />
             </children>
         </Pane>
     </children>
