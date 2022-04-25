@@ -679,7 +679,7 @@ public class commands {
                 }
                 //Construct the new file that will later be renamed to the original filename.
                 File tempFile = new File(inputFile + ".tmp");
-                br = new BufferedReader(new InputStreamReader(new FileInputStream(inputFile), StandardCharsets.UTF_16));
+                br = new BufferedReader(new InputStreamReader(new FileInputStream(inputFile), StandardCharsets.UTF_8));
                 bw = new BufferedWriter(new FileWriter(tempFile));
                 String line1;
 
