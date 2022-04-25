@@ -12,14 +12,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1b14d921-ac7f-4e54-8f87-5285336ba709" name="Changes" comment="test commit">
+    <list default="true" id="1b14d921-ac7f-4e54-8f87-5285336ba709" name="Changes" comment="add plot health check">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project_chia/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project_chia/HelloController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project_chia/commands.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project_chia/commands.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/project_chia/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/project_chia/hello-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/project_chia/HelloController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/project_chia/HelloController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/project_chia/commands.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/project_chia/commands.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/project_chia/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/project_chia/hello-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -212,7 +207,7 @@
       <workItem from="1650281172307" duration="19000" />
       <workItem from="1650381997257" duration="35000" />
       <workItem from="1650400278764" duration="2897000" />
-      <workItem from="1650821959733" duration="15758000" />
+      <workItem from="1650821959733" duration="18381000" />
     </task>
     <task id="LOCAL-00001" summary="test commit">
       <created>1650038338626</created>
@@ -242,7 +237,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650039565162</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="add plot health check">
+      <created>1650840297858</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1650840297858</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -267,7 +269,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="test commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="test commit" />
+    <MESSAGE value="add plot health check" />
+    <option name="LAST_COMMIT_MESSAGE" value="add plot health check" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

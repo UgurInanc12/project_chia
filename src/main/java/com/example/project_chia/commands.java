@@ -181,15 +181,30 @@ public class commands {
         String xchversion = chiaVersion();
         while ((line = br.readLine()) != null) {
             System.out.println("location for terminal:" + line);
-            // Executing the command with ProcessBuilder
-            ProcessBuilder plot_checker = new ProcessBuilder("C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe", "cd C:\\Users\\" + windows_username
-                    + "\\AppData\\Local\\chia-blockchain\\app-" + xchversion + "\\resources\\app.asar.unpacked\\daemon ; " +
-                    "./chia.exe plots check -g " + line + "\\ " +
-                    "-n " + check_Number + "  >C:\\tmp1\\results\\" + loop1 + ".txt 2>&1 ; exit");
-            Process process = plot_checker.start();
+            if (line.endsWith("\\")) {
+                // Executing the command with ProcessBuilder
+                ProcessBuilder plot_checker = new ProcessBuilder("C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe", "cd C:\\Users\\" + windows_username
+                        + "\\AppData\\Local\\chia-blockchain\\app-" + xchversion + "\\resources\\app.asar.unpacked\\daemon ; " +
+                        "./chia.exe plots check -g " + line + " " +
+                        "-n " + check_Number + "  >C:\\tmp1\\result\\" + loop1 + ".txt 2>&1 ; exit");
 
-            int exitCode = process.waitFor();
-            System.out.println("Exit code: " + exitCode);
+                Process process = plot_checker.start();
+
+                int exitCode = process.waitFor();
+                System.out.println("Exit code: " + exitCode);
+            } else {
+                // Executing the command with ProcessBuilder
+                ProcessBuilder plot_checker = new ProcessBuilder("C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe", "cd C:\\Users\\" + windows_username
+                        + "\\AppData\\Local\\chia-blockchain\\app-" + xchversion + "\\resources\\app.asar.unpacked\\daemon ; " +
+                        "./chia.exe plots check -g " + line + "\\ " +
+                        "-n " + check_Number + "  >C:\\tmp1\\result\\" + loop1 + ".txt 2>&1 ; exit");
+
+                Process process = plot_checker.start();
+
+                int exitCode = process.waitFor();
+                System.out.println("Exit code: " + exitCode);
+            }
+
 
             RemoveALine_command("plotParsing", line, loop1);
             RemoveALine_command("clearEmptySpace", line, loop1);
