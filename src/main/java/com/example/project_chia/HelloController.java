@@ -30,20 +30,9 @@ public class HelloController {
 
 
 
-
-
-
-
-    @FXML
-    protected void onHelloButtonClick() throws IOException {
-        welcomeText.setText("Welcome to JavaFX Application!");
-    }
-
-
-
     @FXML
     protected void removealine() throws IOException {
-        new com.example.project_chia.commands("RemoveALine", null);
+        new com.example.project_chia.commands("RemoveALine", Check_Number.getText());
 
     }
     @FXML
@@ -53,7 +42,7 @@ public class HelloController {
     }
     @FXML
     protected void mergeResults() throws IOException {
-        new com.example.project_chia.commands("mergeResults", null);
+        new com.example.project_chia.commands("mergeResults", Check_Number.getText());
 
     }
     @FXML

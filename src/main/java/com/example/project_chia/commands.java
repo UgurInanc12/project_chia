@@ -1,5 +1,7 @@
 package com.example.project_chia;
 
+import javafx.fxml.FXML;
+
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -26,7 +28,7 @@ public class commands {
     }
 
 
-    public commands(String command, String add_a_path_textfield) throws IOException {
+    public commands(String command, String sendedValue) throws IOException {
         if (command == "findPaths") {
             try {
                 findPaths_command();
@@ -35,22 +37,22 @@ public class commands {
             }
         } else if (command == "checkPlots") {
             try {
-                checkPlots_command(Integer.valueOf(add_a_path_textfield));
+                checkPlots_command(Integer.valueOf(sendedValue));
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         } else if (command == "mergeResults") {
-            mergeResults("", Integer.parseInt(add_a_path_textfield));
+            mergeResults("", Integer.parseInt(sendedValue));
         } else if (command == "lowPlots") {
-            lowPlots(Float.valueOf(add_a_path_textfield));
+            lowPlots(Float.valueOf(sendedValue));
         } else if (command == "add_a_path") {
-            add_a_path_command(add_a_path_textfield);
+            add_a_path_command(sendedValue);
         } else if (command == "Show_Keys") {
             Show_Keys_command();
         } else if (command == "RemoveALine") {
             RemoveALine_command("findPaths_command", null, null);
         } else if (command == "savePassphrase") {
-            passphrase_save(add_a_path_textfield);
+            passphrase_save(sendedValue);
         }
     }
 
@@ -66,11 +68,11 @@ public class commands {
                 e.printStackTrace();
             }
         }
-        tmp1 = Path.of("C:\\tmp1\\results");
+        tmp1 = Path.of("C:\\tmp1\\result");
         if (Files.isDirectory(tmp1)) {
-            System.out.println("---->there is results in tmp1");
+            System.out.println("---->there is result in tmp1");
         } else {
-            System.out.println("---->there is no results folder in tmp1, Trying to Create new one");
+            System.out.println("---->there is no result folder in tmp1, Trying to Create new one");
             try {
                 Files.createDirectory(tmp1);
             } catch (IOException e) {
@@ -170,14 +172,14 @@ public class commands {
             System.out.println("File does not exist");
             return;
         }
-        //
+
         BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(inputFile)));
         String line;
 
         //Read from the original file and write to the new
         //unless content matches data to be removed.
         System.out.println("while a geldi");
-        int loop1 = 0;
+        int loop1 = 1;
         String xchversion = chiaVersion();
         while ((line = br.readLine()) != null) {
             System.out.println("location for terminal:" + line);
@@ -204,15 +206,12 @@ public class commands {
                 int exitCode = process.waitFor();
                 System.out.println("Exit code: " + exitCode);
             }
-
-
             RemoveALine_command("plotParsing", line, loop1);
             RemoveALine_command("clearEmptySpace", line, loop1);
 
             loop1++;
-
-
         }
+        loop1 -= 1;
         br.close();
         mergeResults(null, loop1);
         System.out.println("checkPlots_command is done");
@@ -380,6 +379,7 @@ public class commands {
 
     public void mergeResults(String line, int loop1) {
         System.out.println("\nmerging result files");
+
         try {
             int i = loop1;
             File newFile = new File("C:\\tmp1\\result\\result.txt");
@@ -614,7 +614,7 @@ public class commands {
         } else if (command.equals("plotParsing")) {
             System.out.println("\n" + loop1 + ".txt organizing");
             try {
-                File inputFile = new File("C:\\tmp1\\results\\" + loop1 + ".txt");
+                File inputFile = new File("C:\\tmp1\\result\\" + loop1 + ".txt");
                 if (!inputFile.isFile()) {
                     System.out.println("File does not exist");
                     return;
@@ -672,14 +672,14 @@ public class commands {
         } else if (command.equals("clearEmptySpace")) {
             System.out.println("\n" + loop1 + ".txt clearEmptySpace");
             try {
-                File inputFile = new File("C:\\tmp1\\results\\" + loop1 + ".txt");
+                File inputFile = new File("C:\\tmp1\\result\\" + loop1 + ".txt");
                 if (!inputFile.isFile()) {
                     System.out.println("File does not exist");
                     return;
                 }
                 //Construct the new file that will later be renamed to the original filename.
                 File tempFile = new File(inputFile + ".tmp");
-                br = new BufferedReader(new InputStreamReader(new FileInputStream(inputFile), "UTF8"));
+                br = new BufferedReader(new InputStreamReader(new FileInputStream(inputFile), StandardCharsets.UTF_16));
                 bw = new BufferedWriter(new FileWriter(tempFile));
                 String line1;
 
