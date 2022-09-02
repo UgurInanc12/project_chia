@@ -3,6 +3,8 @@ package com.example.project_chia;
 import javafx.fxml.FXML;
 
 import java.io.*;
+import java.nio.charset.Charset;
+import java.nio.charset.CharsetEncoder;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -14,7 +16,7 @@ public class commands {
     public String chiaVersion() throws IOException {
 
         File file = new File("C:\\tmp1\\chia_version.txt");
-        String version = null;
+        String version = "";
         try {
 
             BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file), StandardCharsets.UTF_16));
@@ -173,7 +175,7 @@ public class commands {
             return;
         }
 
-        BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(inputFile)));
+        BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(inputFile), StandardCharsets.UTF_16));
         String line;
 
         //Read from the original file and write to the new
@@ -231,9 +233,9 @@ public class commands {
             File lowScorePlot = new File("C:\\tmp1\\result\\lowScorePlot.txt");
 
 
-            br = new BufferedReader(new InputStreamReader(new FileInputStream(inputFile)));
-            bw_err = new BufferedWriter(new FileWriter(errorPlotFile));
-            bw_low = new BufferedWriter(new FileWriter(lowScorePlot));
+            br = new BufferedReader(new InputStreamReader(new FileInputStream(inputFile), StandardCharsets.UTF_16));
+            bw_err = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(errorPlotFile), StandardCharsets.UTF_16));
+            bw_low = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(lowScorePlot), StandardCharsets.UTF_16));
 
             //Read from the original file and write to the new
             //unless content matches data to be removed.
@@ -383,7 +385,9 @@ public class commands {
         try {
             int i = loop1;
             File newFile = new File("C:\\tmp1\\result\\result.txt");
-            BufferedWriter bw = new BufferedWriter(new FileWriter(newFile));
+            BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(newFile), StandardCharsets.UTF_16));
+
+
             File inputFile = null;
             inputFile = new File("C:\\tmp1\\result\\" + i + ".txt");
             BufferedReader br = new BufferedReader((new InputStreamReader(new FileInputStream(inputFile), StandardCharsets.UTF_16)));
@@ -398,7 +402,7 @@ public class commands {
                         i = 0;
                         break;
                     } else {
-                        br = new BufferedReader(new InputStreamReader(new FileInputStream(inputFile)));
+                        br = new BufferedReader(new InputStreamReader(new FileInputStream(inputFile), StandardCharsets.UTF_16));
                         System.out.println("loop1= " + i);
                         while ((line = br.readLine()) != null) {
                             bw.write(line);
@@ -429,7 +433,7 @@ public class commands {
             //Construct the new file that will later be renamed to the original filename.
             File tempFile = new File(inputFile + ".tmp");
             BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(inputFile), StandardCharsets.UTF_16));
-            BufferedWriter bw = new BufferedWriter(new FileWriter(tempFile));
+            BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(tempFile), StandardCharsets.UTF_16));
             String line;
 
             //Read from the original file and write to the new
@@ -538,7 +542,7 @@ public class commands {
                 //Construct the new file that will later be renamed to the original filename.
                 File tempFile = new File(inputFile + ".tmp");
                 br = new BufferedReader(new InputStreamReader(new FileInputStream(inputFile), StandardCharsets.UTF_16));
-                bw = new BufferedWriter(new FileWriter(tempFile));
+                bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(tempFile), StandardCharsets.UTF_16));
 
                 //Read from the original file and write to the new
                 //unless content matches data to be removed.
@@ -546,7 +550,7 @@ public class commands {
                 while ((line = br.readLine()) != null) {
 
                     System.out.println(line);
-                    if (line.startsWith(":", 1)) {
+                    if (line.startsWith(":", 1) || line.startsWith("\\\\")) {
                         bw.write(line);
                         bw.newLine();
                         bw.flush();
@@ -580,7 +584,7 @@ public class commands {
                 //Construct the new file that will later be renamed to the original filename.
                 File tempFile = new File(inputFile + ".tmp");
                 br = new BufferedReader(new InputStreamReader(new FileInputStream(inputFile), StandardCharsets.UTF_16));
-                bw = new BufferedWriter(new FileWriter(tempFile));
+                bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(tempFile), StandardCharsets.UTF_16));
                 line = null;
 
                 //Read from the original file and write to the new
@@ -622,7 +626,7 @@ public class commands {
                 //Construct the new file that will later be renamed to the original filename.
                 File tempFile = new File(inputFile + ".tmp");
                 br = new BufferedReader(new InputStreamReader(new FileInputStream(inputFile), StandardCharsets.UTF_16));
-                bw = new BufferedWriter(new FileWriter(tempFile));
+                bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(tempFile), StandardCharsets.UTF_16));
                 String line1 = null;
 
                 //Read from the original file and write to the new
@@ -679,8 +683,8 @@ public class commands {
                 }
                 //Construct the new file that will later be renamed to the original filename.
                 File tempFile = new File(inputFile + ".tmp");
-                br = new BufferedReader(new InputStreamReader(new FileInputStream(inputFile), StandardCharsets.UTF_8));
-                bw = new BufferedWriter(new FileWriter(tempFile));
+                br = new BufferedReader(new InputStreamReader(new FileInputStream(inputFile), StandardCharsets.UTF_16));
+                bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(tempFile), StandardCharsets.UTF_16));
                 String line1;
 
                 //Read from the original file and write to the new
@@ -742,7 +746,7 @@ public class commands {
             }
             System.out.println("plot file clearing empty lines is completed");
 
-        } /*else if (command.equals("rewritePlotInfos")) {
+        } /* else if (command.equals("rewritePlotInfos")) {
             System.out.println("\n" + loop1 + ".txt Rewriting");
             try {
                 File inputFile = new File("C:\\tmp1\\" + loop1 + ".txt");
